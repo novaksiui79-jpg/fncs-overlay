@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>FNCS Overlay</title>
+
+<style>
+body{
+    margin:0;
+    background:transparent;
+    font-family:Arial, sans-serif;
+}
+
+.overlay{
+    position:absolute;
+    top:40px;
+    right:40px;
+    width:320px;
+
+    background:rgba(10,10,20,.85);
+    border:2px solid #7a3cff;
+    border-radius:20px;
+
+    color:white;
+    padding:20px;
+
+    box-shadow:0 0 25px rgba(122,60,255,.5);
+}
+
+.logo{
+    font-size:14px;
+    color:#a88cff;
+    font-weight:bold;
+}
+
+.player{
+    font-size:28px;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.rank{
+    font-size:60px;
+    font-weight:bold;
+    color:#7a3cff;
+}
+
+.info{
+    margin-top:15px;
+    font-size:20px;
+}
+
+.update{
+    margin-top:15px;
+    color:#888;
+    font-size:12px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="overlay">
+
+<div class="logo">FNCS LIVE</div>
+
+<div class="player">Drayko Yolin!</div>
+
+<div class="rank">#128</div>
+
+<div class="info">
+🏆 412 Points<br>
+🎮 8/10 Parties
+</div>
+
+<div class="update" id="heure">
+Dernière mise à jour...
+</div>
+
+</div>
+
+<script>
+function majHeure(){
+let maintenant = new Date();
+document.getElementById("heure").innerHTML =
+"Dernière mise à jour : "
++ maintenant.toLocaleTimeString();
+}
+
+majHeure();
+setInterval(majHeure,1000);
+</script>
+
+</body>
+</html>
