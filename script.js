@@ -1,21 +1,11 @@
-const params = new URLSearchParams(window.location.search);
-const event = params.get("event") || "fncs";
+fetch("events/fncs.json")
+.then(response => response.json())
+.then(data => {
+    const joueur = data[0];
 
-fetch(`events/${event}.json`)
-  .then(response => response.json())
-  .then(data => {
-    const leaderboard = document.getElementById("leaderboard");
-
-    leaderboard.innerHTML = "";
-
-    data.forEach(player => {
-      leaderboard.innerHTML += `
-        <div class="player">
-          <span>#${player.rank}</span>
-          <span>${player.team}</span>
-          <span>${player.points} pts</span>
-          <span>${player.matches} games</span>
-        </div>
-      `;
-    });
-  });
+    document.getElementById("player").innerText = joueur.team;
+    document.getElementById("rank").innerText = "#" + joueur.rank;
+    document.getElementById("info").innerHTML =
+        "🏆 " + joueur.points + " Points<br>" +
+        "🎮 " + joueur.matches + " Parties";
+});
